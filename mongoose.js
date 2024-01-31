@@ -8,7 +8,7 @@ mongoose
   .catch((error) => console.log(error));
 
 const requestSchema = new mongoose.Schema({
-    // TODO: change binId type to 'UUID'
+  // TODO: change binId type to 'UUID'
   binId: String,
   payload: {},
 });

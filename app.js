@@ -1,11 +1,13 @@
 const path = require("path");
+const config = require("./lib/config");
 const express = require("express");
 const uuid4 = require("uuid4");
+const {insertBin} = require("./lib/pg-methods");
 
 const Request = require("./mongoose");
 
 const app = express();
-const port = 3001;
+const port = config.PORT;
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -47,4 +49,12 @@ app.post("/:binId/receiver", async (req, res) => {
 
 app.listen(port, () => {
   console.log(`server running :) on ${port}`);
+});
+
+app.get("/new", (req, res) => {
+  let id = generateBinId();
+  let binPath = generateBinId();
+  let timeStamp = '2004-10-19 10:23:54'
+  insertBin(id, binPath, timeStamp)
+  res.send("you inserted a bin!")
 });
