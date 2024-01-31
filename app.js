@@ -1,5 +1,6 @@
 const express = require("express");
 const uuid4 = require("uuid4");
+const PgPersistence = require("./lib/pg-persistence");
 
 const app = express();
 const port = 3001;
@@ -25,4 +26,13 @@ app.get("/:binId/view", (req, res) => {
 app.post("/:binId/receiver", (req, res) => {
   // do something with webhook
   res.sendStatus(200);
+});
+
+app.get("/new", (req, res) => {
+  let id = generateBinId();
+  let binPath = generateBinId();
+  let timeStamp = '2004-10-19 10:23:54'
+  let hack = new PgPersistence();
+  hack.insertBin(id, binPath, timeStamp)
+  res.send("you inserted a bin!")
 });
