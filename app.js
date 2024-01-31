@@ -1,28 +1,50 @@
+const path = require("path");
 const express = require("express");
 const uuid4 = require("uuid4");
 
+const Request = require("./mongoose");
+
 const app = express();
 const port = 3001;
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 const generateBinId = () => {
   return uuid4();
 };
 
-app.listen(port, () => {
-  console.log(`server running :) on ${port}`);
-});
-
-app.get("/", (req, res) => {
-  let binId = generateBinId();
+app.post("/", (req, res) => {
+  const binId = generateBinId();
   res.redirect(`/${binId}/view`);
 });
 
-app.get("/:binId/view", (req, res) => {
-  // let binId = req.params.binId;
-  res.send("you lookin at me?");
+app.get("/:binId/view", async (req, res) => {
+  const binId = req.params.binId;
+
+  const requests = await Request.find({ binId: binId });
+  res.render("binView", { binId: binId, requests: requests });
 });
 
-app.post("/:binId/receiver", (req, res) => {
-  // do something with webhook
-  res.sendStatus(200);
+app.post("/:binId/receiver", async (req, res) => {
+  try {
+    const newRequest = new Request({
+      binId: req.params.binId,
+      payload: req.body,
+    });
+
+    await newRequest.save();
+
+    res.status(201).send("Request saved");
+  } catch (error) {
+    res.status(500).send("Error saving request");
+  }
+});
+
+app.listen(port, () => {
+  console.log(`server running :) on ${port}`);
 });
