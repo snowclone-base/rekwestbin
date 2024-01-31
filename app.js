@@ -1,9 +1,10 @@
+const config = require("./lib/config");
 const express = require("express");
 const uuid4 = require("uuid4");
-const PgPersistence = require("./lib/pg-persistence");
+const {insertBin} = require("./lib/pg-methods");
 
 const app = express();
-const port = 3001;
+const port = config.PORT;
 
 const generateBinId = () => {
   return uuid4();
@@ -32,7 +33,6 @@ app.get("/new", (req, res) => {
   let id = generateBinId();
   let binPath = generateBinId();
   let timeStamp = '2004-10-19 10:23:54'
-  let hack = new PgPersistence();
-  hack.insertBin(id, binPath, timeStamp)
+  insertBin(id, binPath, timeStamp)
   res.send("you inserted a bin!")
 });
