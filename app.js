@@ -2,7 +2,7 @@ const path = require("path");
 const config = require("./lib/config");
 const express = require("express");
 const uuid4 = require("uuid4");
-const { insertBin, insertRequest } = require("./lib/pg-methods");
+const { insertBin, insertRequest, getBinId } = require("./lib/pg-methods");
 
 const Request = require("./mongoose");
 
@@ -47,8 +47,8 @@ app.post("/:binId/receiver", async (req, res) => {
   }
 
   const requestId = uuid4();
-  insertRequest(requestId, req.params.binId, mongoObj._id, getCurrentTimestamp(), req.method, req.originalUrl)
-
+  const binPK = await getBinId(req.params.binId);
+  insertRequest(requestId, binPK, mongoObj._id, getCurrentTimestamp(), req.method, req.originalUrl);
 });
 
 app.listen(port, () => {
