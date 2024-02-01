@@ -1,6 +1,8 @@
+const config = require("./lib/config");
 const mongoose = require("mongoose");
+
 const url =
-  "mongodb+srv://sarah:hello@cluster0.z9kd34g.mongodb.net/?retryWrites=true&w=majority";
+  config.MONGO_URL;
 
 mongoose
   .connect(url)
