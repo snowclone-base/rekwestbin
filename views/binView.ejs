@@ -8,17 +8,36 @@
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
-    <h1>Your endpoint is: https://{our domain goes here}/<%= binId %>/receiver</h1>
+    <h1>Your endpoint is:</h1>
+    <h3> https://timtestapp.com/<%= binId %>/receiver</h3>
+    <div class="button-container">
+      <button id="copyURLButton" class="copyURLButton">Copy URL</button>
+    </div>
     <ul>
       <% requests.forEach(request => { %>
       <li>
-        <p>
-          <strong>Date:</strong> <%= new
-          Date(request._id.getTimestamp()).toLocaleString() %>
+        <p class="payload-data">
+          <strong>Date:</strong> <%= new Date(request._id.getTimestamp()).toLocaleString() %>
         </p>
-        <p><strong>Payload:</strong> <%= JSON.stringify(request.payload) %></p>
+        <p class="payload-data"><strong>Payload:</strong>
+          <div class="border">
+            </p><code> <%= JSON.stringify(request.payload) %></code>
+          </div>
       </li>
       <% }); %>
     </ul>
+
+    <script>
+      document.getElementById("copyURLButton").addEventListener("click", function() {
+        var urlToCopy = "https://timtestapp.com/<%= binId %>/receiver";
+        var textArea = document.createElement("textarea");
+        textArea.value = urlToCopy;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+        alert("URL copied to clipboard: " + urlToCopy);
+      });
+    </script>
   </body>
 </html>
