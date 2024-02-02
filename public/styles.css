@@ -1,5 +1,6 @@
 body {
   background-color: #D1F2EB ;
+  text-align: center;
 }
 
 form {
@@ -36,4 +37,66 @@ h2, h1 {
   font-family:futura;
   font-size: xxx-large;
   text-align: center;
+}
+
+h3 {
+  text-align:center;
+  font-family:futura;
+}
+
+/* button#copyURLButton {
+  background-color: #F1C40F;
+  padding: 10px 20px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  font-family: futura;
+}
+*/
+
+.copyURLButton {
+  text-align: center;
+  background-color: #F1C40F;
+  padding: 10px 20px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  font-family: futura;
+}
+
+.copyURLButton:hover {
+  background-color: pink;
+}
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container {
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+}
+
+.border {
+  border: 2px solid black;
+  padding: 15px;
+  background-color: white;
+  text-align: left;
+}
+
+code {
+  word-wrap: break-word;
+}
+
+.payload-data {
+  text-align: left;
 }

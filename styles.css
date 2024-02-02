@@ -1,0 +1,46 @@
+body {
+  background-color: #D1F2EB ;
+}
+
+form {
+  text-align: -webkit-center;
+  font-family: futura;
+  padding-top: 70px;
+}
+
+input {
+  text-align: center;
+  background-color: #F1C40F;
+  padding: 10px 20px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  font-family: futura;
+}
+
+p {
+  text-align: center;
+  font-family: futura;
+}
+
+input:hover {
+  background-color: pink;
+}
+
+h2 {
+  font-family:futura;
+  font-size: xxx-large;
+  text-align: center;
+}
+
+h1 {
+  font-family:futura;
+  font-size: large;
+  text-align: center;
+}
+
