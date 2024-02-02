@@ -27,6 +27,7 @@ app.get("/:binId/view", async (req, res) => {
   const binId = req.params.binId;
 
   const requests = await Request.find({ binId: binId });
+  requests.reverse()
   res.render("binView", { binId: binId, requests: requests });
 });
 
