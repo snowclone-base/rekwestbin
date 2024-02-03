@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>Your endpoint is:</h1>
-    <h3> https://timtestapp.com/<%= binId %>/receiver</h3>
+    <h3> https://rekwestbin.com/<%= binId %>/receiver</h3>
     <div class="button-container">
       <button id="copyURLButton" class="copyURLButton">Copy URL</button>
     </div>
@@ -18,6 +18,9 @@
       <li>
         <p class="payload-data">
           <strong>Date:</strong> <%= new Date(request._id.getTimestamp()).toLocaleString("en-US", {"timeZoneName":"short"}) %>
+        </p>
+        <p class="payload-data">
+          <strong>Method:</strong> <%= JSON.stringify(request.method) %>
         </p>
         <p class="payload-data"><strong>Payload:</strong>
           <div class="border">
@@ -29,7 +32,7 @@
 
     <script>
       document.getElementById("copyURLButton").addEventListener("click", function() {
-        var urlToCopy = "https://timtestapp.com/<%= binId %>/receiver";
+        var urlToCopy = "https://rekwestbin.com/<%= binId %>/receiver";
         var textArea = document.createElement("textarea");
         textArea.value = urlToCopy;
         document.body.appendChild(textArea);
