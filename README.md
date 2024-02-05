@@ -11,8 +11,17 @@ T
 
 p.s. 
 The 'demo-repository' listed in our organization seems like a good tutorial resource.
--- this is tim testing pull review requests
 
-my first pull request
+Version train release notes:
+- Updated the displayed domain for receiver to "rekwestbin.com"
+- Receiver now accepts all requests (instead of just POST)
+- Requests now display method
+- Removed diaeresis from html title
+- Added our Counterpoint icon as favicon
 
--this is me testing the 1 required sign-off for merge feature
+Future updates:
+- Web socket to push updates to view
+- Button to send test requests
+- Formatting JSON into pretty version
+
+

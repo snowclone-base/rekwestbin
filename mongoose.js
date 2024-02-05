@@ -13,6 +13,7 @@ const requestSchema = new mongoose.Schema({
   // TODO: change binId type to 'UUID'
   binId: String,
   payload: {},
+  method: String,
 });
 
 const Request = mongoose.model("Request", requestSchema);

@@ -31,13 +31,14 @@ app.get("/:binId/view", async (req, res) => {
   res.render("binView", { binId: binId, requests: requests });
 });
 
-app.post("/:binId/receiver", async (req, res) => {
+app.all("/:binId/receiver", async (req, res) => {
   var mongoObj;
 
   try {
     const newRequest = new Request({
       binId: req.params.binId,
       payload: req.body,
+      method: req.method,
     });
 
     mongoObj = await newRequest.save();
